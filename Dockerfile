@@ -6,9 +6,25 @@ WORKDIR /app
 
 # 安装系统依赖
 RUN apt-get update && apt-get install -y \
+    # 音视频处理
     ffmpeg \
+    # PyAV 编译依赖
+    pkg-config \
+    libavformat-dev \
+    libavcodec-dev \
+    libavdevice-dev \
+    libavutil-dev \
+    libavfilter-dev \
+    libswscale-dev \
+    libswresample-dev \
+    # Python 编译工具
+    gcc \
+    g++ \
+    make \
+    # 基础工具
     wget \
     ca-certificates \
+    # Playwright/Chromium 依赖
     fonts-liberation \
     libasound2 \
     libatk-bridge2.0-0 \
