@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+*.env.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+data/temp/*
+data/uploads/*
+!data/temp/.gitkeep
+!data/uploads/.gitkeep
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!requirements.txt
+
+# Playwright cache (will be installed in container)
+.playwright/

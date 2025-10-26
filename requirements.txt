@@ -31,6 +31,10 @@ tenacity==8.2.3
 
 # 音视频处理
 ffmpeg-python==0.2.0
+yt-dlp==2023.12.30
+
+# AI 总结服务
+openai==1.6.1
 
 # 语音识别 - Whisper (备选)
 # 选择其中一个安装
