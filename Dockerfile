@@ -53,8 +53,8 @@ RUN mkdir -p data/temp data/uploads logs
 ENV PYTHONUNBUFFERED=1
 ENV APP_ENV=production
 
-# 暴露端口
-EXPOSE 8000
+# 暴露端口（Render 会动态分配）
+EXPOSE $PORT
 
-# 启动命令
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# 启动命令（使用 sh 来支持环境变量）
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
