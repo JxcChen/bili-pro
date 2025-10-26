@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: bilibili-transcript
+    env: docker
+    region: singapore
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_URL
+        value: https://api.deepseek.com/v1
+      - key: ASR_PROVIDER
+        value: whisper
+      - key: WHISPER_MODEL
+        value: base
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: False
+      - key: PORT
+        value: 8000
