@@ -30,16 +30,14 @@ loguru==0.7.2
 tenacity==8.2.3
 
 # 音视频处理
-ffmpeg-python==0.2.0
 yt-dlp==2023.12.30
 
 # AI 总结服务
 openai==1.6.1
 
-# 语音识别 - Whisper (备选)
-# 选择其中一个安装
-faster-whisper==0.10.0
-# openai-whisper==20231117
+# 语音识别 - 云端方案（不需要编译依赖）
+# faster-whisper 需要编译 PyAV，在 Render 免费套餐中内存不足
+# 生产环境建议使用云端 ASR API（如 bcut-asr 云端版本）
 
 # 必剪ASR (需要单独安装)
 # 安装方法:

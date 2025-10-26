@@ -96,6 +96,23 @@ async def extract_transcript(request: VideoRequest, background_tasks: Background
         # 步骤5：没有字幕，需要下载视频并进行ASR
         logger.info("No subtitle found, will use ASR")
 
+        # 检查 ASR 是否可用
+        try:
+            # 尝试导入 ASR 引擎检查是否可用
+            if not hasattr(asr_engine, '_check_availability'):
+                # 添加可用性检查方法
+                from app.services.asr_engine import BCUT_AVAILABLE, WHISPER_AVAILABLE
+                if not BCUT_AVAILABLE and not WHISPER_AVAILABLE:
+                    raise HTTPException(
+                        status_code=501,
+                        detail="ASR 功能暂不可用。该视频没有字幕，需要语音识别功能，但当前部署环境不支持。建议选择有字幕的视频。"
+                    )
+        except ImportError:
+            raise HTTPException(
+                status_code=501,
+                detail="ASR 功能暂不可用。该视频没有字幕，需要语音识别功能，但当前部署环境不支持。建议选择有字幕的视频。"
+            )
+
         # 创建异步任务
         task_id = str(uuid.uuid4())
         tasks[task_id] = {
